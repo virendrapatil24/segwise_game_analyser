@@ -8,6 +8,8 @@ import {
 } from "react-router-dom";
 import RegisterPage from "./components/RegisterPage";
 import LoginPage from "./components/LoginPage";
+import HomePage from "./components/HomePage";
+import UploadPage from "./components/UploadPage";
 
 const isAuthenticated = () => {
   return !!localStorage.getItem("authToken");
@@ -25,8 +27,16 @@ function App() {
       <Router>
         <Routes>
           <Route
+            path="/"
+            element={isUserLoggedIn ? <HomePage /> : <Navigate to="/login" />}
+          />
+          <Route
             path="/register/"
             element={isUserLoggedIn ? <Navigate to="/" /> : <RegisterPage />}
+          />
+          <Route
+            path="/upload"
+            element={isUserLoggedIn ? <UploadPage /> : <Navigate to="/" />}
           />
           <Route
             path="/login"
