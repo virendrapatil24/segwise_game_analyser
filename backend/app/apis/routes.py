@@ -23,13 +23,13 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
 
 @api_router.post("/register/")
 def register_user(user: UserCreate, db: Session = Depends(get_db)):
-    user = db.query(User).filter(User.username == user.username).first()
-    if user:
+    is_existing_user = db.query(User).filter(User.username == user.username).first()
+    if is_existing_user:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="Username already registered",
         )
-
+    print(user, user.username, user.password)
     hashed_password = hash_password(user.password)
     new_user = User(username=user.username, hashed_password=hashed_password)
     db.add(new_user)
