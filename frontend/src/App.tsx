@@ -7,6 +7,7 @@ import {
   Routes,
 } from "react-router-dom";
 import RegisterPage from "./components/RegisterPage";
+import LoginPage from "./components/LoginPage";
 
 const isAuthenticated = () => {
   return !!localStorage.getItem("authToken");
@@ -26,6 +27,16 @@ function App() {
           <Route
             path="/register/"
             element={isUserLoggedIn ? <Navigate to="/" /> : <RegisterPage />}
+          />
+          <Route
+            path="/login"
+            element={
+              isUserLoggedIn ? (
+                <Navigate to="/" />
+              ) : (
+                <LoginPage setIsUserLoggedIn={setIsUserLoggedIn} />
+              )
+            }
           />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
