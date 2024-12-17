@@ -10,6 +10,7 @@ import RegisterPage from "./components/RegisterPage";
 import LoginPage from "./components/LoginPage";
 import HomePage from "./components/HomePage";
 import UploadPage from "./components/UploadPage";
+import GetDataPage from "./components/GetDataPage";
 
 const isAuthenticated = () => {
   return !!localStorage.getItem("authToken");
@@ -35,11 +36,15 @@ function App() {
             element={isUserLoggedIn ? <Navigate to="/" /> : <RegisterPage />}
           />
           <Route
-            path="/upload"
+            path="/upload/"
             element={isUserLoggedIn ? <UploadPage /> : <Navigate to="/" />}
           />
           <Route
-            path="/login"
+            path="/get_data/"
+            element={isUserLoggedIn ? <GetDataPage /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/login/"
             element={
               isUserLoggedIn ? (
                 <Navigate to="/" />

@@ -13,10 +13,10 @@ const NavBar = () => {
           </h1>
           <div className="flex space-x-4">
             <Button variant="link">
-              <Link to="/upload">Upload</Link>
+              <Link to="/upload/">Upload</Link>
             </Button>
             <Button variant="link">
-              <Link to="/get_data">Get Data</Link>
+              <Link to="/get_data/">Get Data</Link>
             </Button>
           </div>
         </div>
